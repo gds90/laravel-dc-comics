@@ -6,7 +6,12 @@
             <div class="col-12">
                 <div class="splitter">
                     <div class="thumb">
-                        <img src="{{ $comic['src'] }}" alt="{{ $comic['titolo'] }}" class="border border-light">
+                        @if ($comic->src == null)
+                            <img src="{{ Vite::asset('resources/img/dc_comics_placeholder.jpg') }}"
+                                alt="{{ $comic['titolo'] }}">
+                        @else
+                            <img src="{{ $comic['src'] }}" alt="{{ $comic['titolo'] }}" class="border border-light">
+                        @endif
                     </div>
                 </div>
             </div>
