@@ -16,9 +16,11 @@
                         </div>
                     </a>
                 @endforeach
-                <div id="loadMoreContainer">
-                    <button id="loadMoreBtn">LOAD MORE</button>
+                <div class="loadMoreContainer">
+                    <button class="loadMoreBtn">LOAD MORE</button>
+                    <a class="loadMoreBtn" href="{{ route('comics.create') }}">AGGIUNGI FUMETTO</a>
                 </div>
+
             </div>
         </div>
     </div>

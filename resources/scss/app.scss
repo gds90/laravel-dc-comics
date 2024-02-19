@@ -112,10 +112,10 @@ header {
 
 }
 
-#loadMoreContainer {
+.loadMoreContainer {
     text-align: center;
 
-    #loadMoreBtn {
+    .loadMoreBtn {
         background-color: rgb(56, 128, 241);
         color: #fff;
         font-size: 12px;
@@ -324,4 +324,11 @@ header {
         margin: 0 auto;
 
     }
+}
+
+.form-container {
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid rgb(196, 191, 191);
+    border-radius: 10px;
 }
