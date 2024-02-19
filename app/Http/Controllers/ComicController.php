@@ -37,7 +37,20 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        // recupero i dati inseriti dall'utente nel form
+        // verifico che i dati inseriti dall'utente nella form rispettino alcune regole
+        $request->validate([
+            'titolo' => 'required|max:50|min:3',
+            'serie' => 'required|max:50|min:3',
+            'descrizione' => 'required',
+            'src' => 'max:255',
+            'genere' => 'required|max:20',
+            'prezzo' => 'required|max:10',
+            'data_uscita' => 'required|max:10|min:8',
+            'artisti' => 'required',
+            'scrittori' => 'required'
+        ]);
+
+        // recupero i dati inseriti dall'utente nella form
         $form_data = $request->all();
 
 
