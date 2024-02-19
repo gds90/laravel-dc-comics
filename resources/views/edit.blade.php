@@ -2,6 +2,15 @@
 
 @section('content')
     <div class="form-container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <h2 class="text-center my-3">Modifica dati del fumetto:</h2>
         <form action="{{ route('comics.update', $comic->id) }}" method="POST">
             @csrf
@@ -10,47 +19,48 @@
             <div class="form-group mb-3 ">
                 <label for="titolo">Titolo</label>
                 <input type="text" name="titolo" id="titolo" class="form-control" placeholder="Nome fumetto"
-                    value="{{ $comic->titolo }}" required>
+                    value="{{ old('titolo') ?? $comic->titolo }}" required>
             </div>
 
             <div class="form-group mb-3 ">
                 <label for="src">Copertina</label>
                 <input type="text" name="src" id="src" class="form-control"
-                    placeholder="Link copertina fumetto" value="{{ $comic->src }}">
+                    placeholder="Link copertina fumetto" value="{{ old('src') ?? $comic->src }}">
             </div>
             <div class="form-group mb-3 ">
                 <label for="prezzo">Prezzo</label>
                 <input type="text" name="prezzo" id="prezzo" class="form-control" placeholder="Prezzo fumetto"
-                    value="{{ $comic->prezzo }}" required>
+                    value="{{ old('prezzo') ?? $comic->prezzo }}" required>
             </div>
             <div class="form-group mb-3 ">
                 <label for="serie">Serie</label>
                 <input type="text" name="serie" id="serie" class="form-control" placeholder="Serie fumetto"
-                    value="{{ $comic->serie }}" required>
+                    value="{{ old('serie') ?? $comic->serie }}" required>
             </div>
             <div class="form-group mb-3 ">
                 <label for="data_uscita">Data di uscita</label>
                 <input type="text" name="data_uscita" id="data_uscita" class="form-control"
-                    value="{{ $comic->data_uscita }}" placeholder="Data di uscita del fumetto" required>
+                    value="{{ old('data_uscita') ?? $comic->data_uscita }}" placeholder="Data di uscita del fumetto"
+                    required>
             </div>
             <div class="form-group mb-3 ">
                 <label for="genere">Genere</label>
                 <input type="text" name="genere" id="genere" class="form-control" placeholder="Genere fumetto"
-                    value="{{ $comic->genere }}" required>
+                    value="{{ old('genere') ?? $comic->genere }}" required>
             </div>
             <div class="form-group mb-3 ">
                 <label for="artisti">Artista/i</label>
                 <input type="text" name="artisti" id="artisti" class="form-control" placeholder="Artista/i fumetto"
-                    value="{{ $comic->artisti }}" required>
+                    value="{{ old('artisti') ?? $comic->artisti }}" required>
             </div>
             <div class="form-group mb-3 ">
                 <label for="scrittori">Scrittore/i</label>
                 <input type="text" name="scrittori" id="scrittori" class="form-control" placeholder="Scrittore/i fumetto"
-                    value="{{ $comic->scrittori }}" required>
+                    value="{{ old('scrittori') ?? $comic->scrittori }}" required>
             </div>
             <div class="form-group mb-3 ">
                 <label for="descrizione">Descrizione</label>
-                <textarea name="descrizione" id="descrizione" class="form-control" placeholder="Descrizione" required>{{ $comic->descrizione }}</textarea>
+                <textarea name="descrizione" id="descrizione" class="form-control" placeholder="Descrizione" required>{{ old('descrizione') ?? $comic->descrizione }}</textarea>
             </div>
             <div class="form-group mb-3">
                 <button type="submit" class="btn btn-sm btn-success">Salva</button>
