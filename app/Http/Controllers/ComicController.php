@@ -56,7 +56,7 @@ class ComicController extends Controller
         // salvo la nuova istanza nel db
         $comic->save();
 
-        // effettuo il redirect alla pagina index
+        // effettuo il redirect alla route index
         return redirect()->route('comics.index');
     }
 
@@ -79,7 +79,10 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        // recupero il fumetto con l'id passato come parametro
+        $comic = Comic::find($id);
+
+        return view('edit', compact('comic'));
     }
 
     /**
@@ -91,7 +94,28 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // recupero dati della form
+        $form_data = $request->all();
+
+        // recupero i record nel database tramite l'id passato come parametro
+        $comic = Comic::find($id);
+
+        // salvo i dati creando una nuova istanza del model Comic
+        $comic->titolo = $form_data['titolo'];
+        $comic->serie = $form_data['serie'];
+        $comic->descrizione = $form_data['descrizione'];
+        $comic->src = $form_data['src'];
+        $comic->genere = $form_data['genere'];
+        $comic->prezzo = $form_data['prezzo'];
+        $comic->data_uscita = $form_data['data_uscita'];
+        $comic->artisti = $form_data['artisti'];
+        $comic->scrittori = $form_data['scrittori'];
+
+        // salvo le modifiche
+        $comic->update();
+
+        // effettuo il redirect alla route show
+        return redirect()->route('comics.show', ['comic' => $comic]);
     }
 
     /**

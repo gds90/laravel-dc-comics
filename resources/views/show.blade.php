@@ -42,6 +42,11 @@
             </div>
         </div>
     </div>
+    <div class="text-center py-3">
+        <div>
+            <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}" class="btn btn-sm btn-warning">Modifica</a>
+        </div>
+    </div>
     <div class="container-fluid p-0 bg-body-secondary border border-secondary-subtle sub-details">
         <div class="row sub-details-content">
             <div class="col-6 p-4">
