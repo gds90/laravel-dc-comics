@@ -53,7 +53,6 @@ class ComicController extends Controller
         // recupero i dati inseriti dall'utente nella form
         $form_data = $request->all();
 
-
         // salvo i dati creando una nuova istanza del model Comic
         $comic = new Comic();
         $comic->titolo = $form_data['titolo'];
