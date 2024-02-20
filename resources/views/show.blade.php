@@ -42,10 +42,15 @@
             </div>
         </div>
     </div>
-    <div class="text-center py-3">
+    <div class="d-flex justify-content-center py-3">
         <div>
             <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}" class="btn btn-sm btn-warning">Modifica</a>
         </div>
+        <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="POST" class="ms-2">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-sm btn-danger">Cancella</button>
+        </form>
     </div>
     <div class="container-fluid p-0 bg-body-secondary border border-secondary-subtle sub-details">
         <div class="row sub-details-content">
